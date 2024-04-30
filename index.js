@@ -1,10 +1,12 @@
+const TelegramBot = require("node-telegram-bot-api");
 require("dotenv").config();
+
 const express = require("express");
 const path = require("path");
-const TelegramBot = require("node-telegram-bot-api");
 
-const gameName = "YOUR_GAME_NAME_GOES_HERE";
-const webURL = "www.YOUR_URL.com";
+
+const gameName = "Ttt";
+const webURL = "https://unity-awx.pages.dev";
 
 const server = express();
 const bot = new TelegramBot(process.env.BOT_TOKEN, { polling: true });
@@ -53,7 +55,7 @@ bot.on("inline_query", function (iq) {
   ]);
 });
 
-server.use(express.static(path.join(__dirname, "public")));
+server.use(express.static(path.join(__dirname, "Build")));
 
 server.get("/highscore/:score", function (req, res, next) {
   if (!Object.hasOwnProperty.call(queries, req.query.id)) return next();
