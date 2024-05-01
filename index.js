@@ -6,7 +6,7 @@ const path = require("path");
 
 
 const gameName = "Ttt";
-const webURL = "https://unity-awx.pages.dev";
+const webURL = "6631867b8eb74b4cd3cb0789--stellular-bombolone-555575.netlify.app";
 
 const server = express();
 const bot = new TelegramBot(process.env.BOT_TOKEN, { polling: true });
@@ -55,7 +55,7 @@ bot.on("inline_query", function (iq) {
   ]);
 });
 
-server.use(express.static(path.join(__dirname, "Build")));
+server.use(express.static(path.join(__dirname, "public")));
 
 server.get("/highscore/:score", function (req, res, next) {
   if (!Object.hasOwnProperty.call(queries, req.query.id)) return next();
