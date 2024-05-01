@@ -3,6 +3,7 @@ require("dotenv").config();
 
 const express = require("express");
 const path = require("path");
+const serverless = require('serverless-http');
 
 
 const gameName = "Ttt";
@@ -108,4 +109,5 @@ server.get("/highscore/:score", function (req, res, next) {
   }
 });
 
-server.listen(port);
+module.exports = app;
+module.exports.handler = serverless(app);
